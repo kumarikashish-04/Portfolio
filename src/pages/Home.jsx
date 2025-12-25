@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import avatar from "../assets/avatar.png";
 import { FaEnvelope, FaLinkedin, FaArrowRight, FaGithub, FaDownload } from "react-icons/fa";
 import resume from "../assets/resume.pdf";
+import profile from "../assets/profile.jpg";
 
 const roles = [
   "Software Engineer",
@@ -147,7 +148,7 @@ export default function Home() {
               <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full border-4 border-white/10 bg-gradient-to-br from-gray-900 to-black p-3 shadow-2xl">
                 {/* Image */}
                 <img
-                  src={avatar}
+                  src={profile}
                   alt="Kashish Avatar"
                   className="w-full h-full object-cover rounded-full border-4 border-gray-800"
                 />

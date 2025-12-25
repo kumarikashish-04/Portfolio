@@ -44,8 +44,8 @@ export default function Projects() {
       gradient: "from-amber-500 to-yellow-400",
       image:
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",
-      github: "https://github.com/kumarikashish-04/my-portfolio",
-      live: "https://kashishkumari-portfolio.netlify.app/",
+      github: "https://github.com/kumarikashish-04/Portfolio",
+      live: "https://kashish4portfolio.netlify.app/",
       category: "Web Development",
     },
     {
