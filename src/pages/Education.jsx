@@ -62,14 +62,15 @@ export default function Education() {
     },
     {
       title: "Child Right and Education",
-      provider: "N.R Ashirwad Foundation",
+      provider: "N.R Ashirwad Foundation, Bokaro Steel City, Jharkhand, India",
       time: "June 2024",
       link: "https://drive.google.com/file/d/1E5dnakNedWhHtJNwZVPylHqFKOJCReHk/view",
       icon: <div className="text-2xl">👨‍🎓</div>
     },
     {
       title: "Code of Duty – Web Hackathon",
-      provider: "Lovely Professional University",
+      provider: "Lovely Professional University, Phagwara, Punjab, India",
+
       time: "March 2024",
       link: "https://drive.google.com/file/d/11qZRxeAIQwAwR8sagQS4cFezHQX51rzg/view",
       icon: <div className="text-2xl">🏆</div>
@@ -235,39 +236,7 @@ export default function Education() {
           </div>
         </div>
 
-        {/* ACHIEVEMENTS SUMMARY */}
-        <div className="mt-20 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-white mb-3">
-              <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">
-                Academic Excellence
-              </span>
-            </h3>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Consistently maintaining high academic standards while actively participating 
-              in certifications and extracurricular activities to enhance practical skills.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="text-center p-4">
-              <div className="text-3xl font-bold text-blue-300">8.34</div>
-              <div className="text-gray-400 text-sm mt-1">Current CGPA</div>
-            </div>
-            <div className="text-center p-4">
-              <div className="text-3xl font-bold text-green-300">88.6%</div>
-              <div className="text-gray-400 text-sm mt-1">12th Percentage</div>
-            </div>
-            <div className="text-center p-4">
-              <div className="text-3xl font-bold text-purple-300">5+</div>
-              <div className="text-gray-400 text-sm mt-1">Certifications</div>
-            </div>
-            <div className="text-center p-4">
-              <div className="text-3xl font-bold text-cyan-300">∞</div>
-              <div className="text-gray-400 text-sm mt-1">Growth Mindset</div>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </section>
   );
