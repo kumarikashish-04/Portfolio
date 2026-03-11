@@ -18,7 +18,7 @@ export default function Education() {
       degree: "Higher Secondary Education (12th)",
       institution: "Adarsh Vidya Mandir",
       address: "Bokaro Steel City, Jharkhand, India",
-      duration: "2022 – 2023",
+      duration: "2021 – 2022",
       score: "88.6%",
       link: "https://avmbokaro.co.in/#",
       description:
@@ -29,7 +29,7 @@ export default function Education() {
       degree: "Secondary Education (10th)",
       institution: "Adarsh Vidya Mandir",
       address: "Bokaro Steel City, Jharkhand, India",
-      duration: "2020 – 2021",
+      duration: "2019 – 2020",
       score: "88%",
       link: "https://avmbokaro.co.in/#",
       description:
@@ -62,14 +62,14 @@ export default function Education() {
     },
     {
       title: "Child Right and Education",
-      provider: "N.R Ashirwad Foundation, Bokaro Steel City, Jharkhand, India",
+      provider: "N.R Ashirwad Foundation",
       time: "June 2024",
       link: "https://drive.google.com/file/d/1E5dnakNedWhHtJNwZVPylHqFKOJCReHk/view",
       icon: <div className="text-2xl">👨‍🎓</div>
     },
     {
       title: "Code of Duty – Web Hackathon",
-      provider: "Lovely Professional University, Phagwara, Punjab, India",
+      provider: "Lovely Professional University",
 
       time: "March 2024",
       link: "https://drive.google.com/file/d/11qZRxeAIQwAwR8sagQS4cFezHQX51rzg/view",
