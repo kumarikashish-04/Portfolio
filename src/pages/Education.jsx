@@ -6,8 +6,9 @@ export default function Education() {
     {
       degree: "Bachelor of Technology (B.Tech)",
       institution: "Lovely Professional University (LPU)",
+      address:" Phagwara, Punjab, India",
       duration: "2023 – Present",
-      score: "CGPA: 8.34",
+      score: "CGPA: 8.37",
       link: "https://www.lpu.in",
       description:
         "Pursuing B.Tech with strong focus on Cloud Computing, Software Development, Data Structures, Web Technologies, and Data Analytics. Actively building real-world projects using React, Java, Power BI, and modern tools.",
@@ -15,7 +16,8 @@ export default function Education() {
     },
     {
       degree: "Higher Secondary Education (12th)",
-      institution: "Adarsh Vidya Mandir, Bokaro Steel City",
+      institution: "Adarsh Vidya Mandir",
+      address: "Bokaro Steel City, Jharkhand, India",
       duration: "2022 – 2023",
       score: "88.6%",
       link: "https://avmbokaro.co.in/#",
@@ -25,7 +27,8 @@ export default function Education() {
     },
     {
       degree: "Secondary Education (10th)",
-      institution: "Adarsh Vidya Mandir, Bokaro Steel City",
+      institution: "Adarsh Vidya Mandir",
+      address: "Bokaro Steel City, Jharkhand, India",
       duration: "2020 – 2021",
       score: "88%",
       link: "https://avmbokaro.co.in/#",
@@ -149,8 +152,9 @@ export default function Education() {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 text-blue-400 font-medium hover:text-cyan-300 transition-colors group/link mt-1"
                         >
-                          {edu.institution}
+                          {edu.institution}, {edu.address}
                           <FaExternalLinkAlt className="text-xs group-hover/link:translate-x-0.5 transition-transform" />
+                          
                         </a>
                       </div>
                     </div>

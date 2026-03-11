@@ -3,6 +3,7 @@ import avatar from "../assets/avatar.png";
 import { FaEnvelope, FaLinkedin, FaArrowRight, FaGithub, FaDownload } from "react-icons/fa";
 import resume from "../assets/resume.pdf";
 import profile from "../assets/profile.jpg";
+import { Link } from "react-router-dom";
 
 const roles = [
   "Software Engineer",
@@ -97,17 +98,12 @@ export default function Home() {
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
               </button>
               
-              <button
-                onClick={() => {
-                  document.getElementById("projects")?.scrollIntoView({
-                    behavior: "smooth",
-                  });
-                }}
-                className="group px-8 py-4 border-2 border-gray-700 hover:border-blue-500 rounded-xl font-semibold text-white hover:text-blue-400 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2"
-              >
-                <span>View Projects</span>
-                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-              </button>
+              <Link to="/projects">
+  <button className="group px-8 py-4 border-2 border-gray-700 hover:border-blue-500 rounded-xl font-semibold text-white hover:text-blue-400 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2">
+    <span>View Projects</span>
+    <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+  </button>
+</Link>
             </div>
 
             {/* Email Button - Centered between other buttons
