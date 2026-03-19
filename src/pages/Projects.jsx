@@ -22,6 +22,18 @@ export default function Projects() {
 
   const projects = [
     {
+      title:"Job Portal Web Application",
+      description:
+        "A full-stack job portal web application built with React, Node.js, Express, and MongoDB, featuring user authentication, job listings, and application management.",
+      tech: ["React", "Node.js", "Express", "MongoDB"],
+      gradient: "from-blue-500 to-cyan-400",
+      image:
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80",
+      github: "https://github.com/kumarikashish-04/Job-Portal",
+      live: "https://job-portal.vercel.app",
+      category: "Web Development",
+    },
+    {
       title: "Crime Analytics Demographics Insights Dashboard",
       description:
         "Interactive Power BI dashboard providing crime trend insights through dynamic charts, filters, and reports.",
