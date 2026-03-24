@@ -1,13 +1,14 @@
-import {
-  FaExternalLinkAlt,
-  FaGraduationCap,
-  FaCertificate,
-  FaCalendarAlt,
-  FaUniversity,
-  FaBookOpen,
+import { motion, useScroll, useSpring } from "framer-motion";
+import { 
+  FaExternalLinkAlt, 
+  FaGraduationCap, 
+  FaCalendarAlt, 
+  FaUniversity, 
+  FaBookOpen, 
+  FaAward,
+  FaMapMarkerAlt
 } from "react-icons/fa";
-import { SiGoogleclassroom } from "react-icons/si";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 const educationData = [
   {
@@ -18,21 +19,23 @@ const educationData = [
     score: "CGPA: 8.37",
     link: "https://www.lpu.in",
     description:
-      "Pursuing B.Tech with strong focus on Cloud Computing, Software Development, Data Structures, Web Technologies, and Data Analytics. Actively building real-world projects using React, Java, Power BI, and modern tools.",
+      "Specializing in Computer Science and Engineering with a focus on Cloud Computing, Full-Stack Development, and Data Analytics. Consistently maintaining strong academic standing while leading technical projects.",
     accent: "#3b82f6",
     icon: <FaUniversity />,
+    skills: ["Cloud Computing", "Java", "DSA", "React"]
   },
   {
     degree: "Higher Secondary Education (12th)",
     institution: "Adarsh Vidya Mandir",
     address: "Bokaro Steel City, Jharkhand, India",
     duration: "2021 – 2022",
-    score: "88.6%",
+    score: "88.6% ",
     link: "https://avmbokaro.co.in/#",
     description:
-      "Completed higher secondary education with emphasis on Mathematics and Computer Science, developing strong analytical and problem-solving skills.",
+      "Core focus on Physics, Chemistry, and Mathematics. Developed strong analytical foundations and logical reasoning skills through rigorous academic training.",
     accent: "#06b6d4",
     icon: <FaBookOpen />,
+    skills: ["Mathematics", "Physics", "Computer Science"]
   },
   {
     degree: "Secondary Education (10th)",
@@ -42,188 +45,216 @@ const educationData = [
     score: "88%",
     link: "https://avmbokaro.co.in/#",
     description:
-      "Built a strong academic foundation with focus on mathematics, science, and logical reasoning.",
+      "Built a solid foundation across general science and humanities with a clear interest in computing and problem solving.",
     accent: "#60a5fa",
     icon: <FaGraduationCap />,
+    skills: ["General Science", "Analytical Thinking"]
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, x: -30, y: 20 },
+  visible: { 
+    opacity: 1, 
+    x: 0, 
+    y: 0,
+    transition: { type: "spring", stiffness: 100, damping: 12 }
+  }
+};
 
 export default function Education() {
-  const [visible, setVisible] = useState(false);
-  const sectionRef = useRef(null);
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end end"]
+  });
 
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold: 0.1 }
-    );
-    if (sectionRef.current) obs.observe(sectionRef.current);
-    return () => obs.disconnect();
-  }, []);
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   return (
     <section
-      ref={sectionRef}
-      id="education"
-      className="relative min-h-screen pt-12 pb-20 px-6 md:px-12 overflow-hidden"
+      className="relative min-h-screen pt-24 pb-32 px-6 md:px-12 overflow-hidden"
       style={{ background: "var(--bg-body)" }}
     >
-      {/* Background orbs — blue/cyan */}
-      <div
-        className="absolute top-0 left-1/4 w-[400px] h-[400px] rounded-full"
-        style={{
-          background: "radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%)",
-          filter: "blur(80px)",
-        }}
-      />
-      <div
-        className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full"
-        style={{
-          background: "radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%)",
-          filter: "blur(80px)",
-        }}
-      />
-
+      {/* Dynamic Background Elements */}
+      <div className="absolute top-20 right-[10%] w-64 h-64 bg-blue-600/5 rounded-full blur-[100px]" />
+      <div className="absolute bottom-20 left-[10%] w-96 h-96 bg-cyan-600/5 rounded-full blur-[120px]" />
+      
       <div className="max-w-6xl mx-auto relative z-10">
         {/* HEADER */}
-        <div className="text-center mb-20">
-          <div className="section-label justify-center">Academic Journey</div>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-24"
+        >
+          <div className="section-label justify-center">Academic Milestones</div>
           <h1
-            className="text-4xl md:text-6xl font-bold mt-2"
+            className="text-5xl md:text-7xl font-bold mt-4 tracking-tight"
             style={{ fontFamily: "var(--font-display)", color: "var(--text-heading)" }}
           >
-            My <span className="gradient-text">Education</span>
+            Education <span className="gradient-text">Timeline</span>
           </h1>
-          <p className="max-w-xl mx-auto mt-4 leading-relaxed" style={{ color: "var(--text-body)" }}>
-            Academic background and milestones demonstrating consistent growth and dedication to learning.
+          <p className="max-w-2xl mx-auto mt-6 text-lg leading-relaxed" style={{ color: "var(--text-body)" }}>
+            A journey of continuous learning, academic excellence, and technical specialization.
           </p>
-        </div>
+        </motion.div>
 
-        {/* ──────────── EDUCATION TIMELINE ──────────── */}
-        <div className="mb-24">
-          <div className="flex items-center gap-3 mb-12">
-            <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center"
-              style={{ background: "linear-gradient(135deg, #2563eb, #0891b2)", boxShadow: "0 4px 16px rgba(59,130,246,0.35)" }}
-            >
-              <FaGraduationCap className="text-white" />
-            </div>
-            <h2
-              className="text-2xl font-bold"
-              style={{ fontFamily: "var(--font-display)", color: "var(--text-heading)" }}
-            >
-              Academic Journey
-            </h2>
+        <div className="relative" ref={containerRef}>
+          {/* Animated Timeline Line */}
+          <div className="absolute left-[31px] md:left-[47px] top-0 bottom-0 w-1 bg-white/5 rounded-full overflow-hidden">
+            <motion.div 
+              style={{ scaleY, originY: 0 }}
+              className="w-full h-full bg-gradient-to-b from-blue-500 via-cyan-500 to-transparent"
+            />
           </div>
 
-          <div className="relative">
-            {/* Timeline line */}
-            <div
-              className="absolute left-5 md:left-6 top-2 bottom-2 w-0.5 rounded-full"
-              style={{ background: "linear-gradient(180deg, rgba(59,130,246,0.5) 0%, rgba(6,182,212,0.3) 60%, rgba(59,130,246,0.1) 100%)" }}
-            />
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="flex flex-col gap-16 md:gap-24"
+          >
+            {educationData.map((edu, i) => (
+              <motion.div 
+                key={i} 
+                variants={cardVariants}
+                className="relative pl-20 md:pl-32"
+              >
+                {/* Timeline Node */}
+                <div className="absolute left-0 top-0 w-16 md:w-24 h-full flex flex-col items-center">
+                  <motion.div 
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    className="w-4 h-4 rounded-full border-[3px] z-20 mb-auto mt-7"
+                    style={{ borderColor: edu.accent, background: "var(--bg-body)", boxShadow: `0 0 20px ${edu.accent}60` }}
+                  />
+                </div>
 
-            <div className="flex flex-col gap-8">
-              {educationData.map((edu, i) => (
-                <div key={i} className="relative pl-14 md:pl-16">
-                  {/* Timeline dot */}
-                  <div className="absolute left-3.5 md:left-4 top-7 z-10">
-                    <div className="timeline-dot" style={{ boxShadow: `0 0 0 3px #030014, 0 0 16px ${edu.accent}60` }} />
+                {/* Content Card */}
+                <div
+                  className="group relative rounded-[40px] p-8 md:p-12 transition-all duration-500 overflow-hidden"
+                  style={{
+                    background: "var(--glass-bg)",
+                    border: "1px solid var(--glass-border)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "translateX(10px) scale(1.02)";
+                    e.currentTarget.style.borderColor = `${edu.accent}30`;
+                    e.currentTarget.style.background = "var(--glass-bg-hover)";
+                    e.currentTarget.style.boxShadow = `0 32px 80px -20px ${edu.accent}15`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "none";
+                    e.currentTarget.style.borderColor = "var(--glass-border)";
+                    e.currentTarget.style.background = "var(--glass-bg)";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
+                >
+                  {/* Decorative corner icon */}
+                  <div className="absolute -top-6 -right-6 text-9xl opacity-[0.03] rotate-12 group-hover:rotate-0 transition-transform duration-700 pointer-events-none" style={{ color: edu.accent }}>
+                    {edu.icon}
                   </div>
 
-                  <div
-                    className="rounded-3xl p-10 md:p-12 transition-all duration-400 group"
-                    style={{
-                      background: "var(--glass-bg)",
-                      border: "1px solid var(--glass-border)",
-                      opacity: visible ? 1 : 0,
-                      transform: visible ? "translateX(0)" : "translateX(-30px)",
-                      transitionDelay: `${i * 200}ms`,
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = `${edu.accent}08`;
-                      e.currentTarget.style.borderColor = `${edu.accent}35`;
-                      e.currentTarget.style.transform = "translateX(6px)";
-                      e.currentTarget.style.boxShadow = `0 16px 48px ${edu.accent}15`;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "rgba(255,255,255,0.03)";
-                      e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)";
-                      e.currentTarget.style.transform = "none";
-                      e.currentTarget.style.boxShadow = "none";
-                    }}
-                  >
-                    <div className="flex flex-col md:flex-row md:items-start gap-4">
-                      {/* Icon */}
+                  <div className="flex flex-col lg:flex-row gap-8 items-start">
+                    {/* Left side: Icon & Degree */}
+                    <div className="lg:w-1/3">
                       <div
-                        className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 text-xl"
+                        className="w-20 h-20 rounded-[28px] flex items-center justify-center text-3xl mb-8 group-hover:rotate-6 transition-transform"
                         style={{
-                          background: `${edu.accent}15`,
+                          background: `linear-gradient(135deg, ${edu.accent}20, ${edu.accent}05)`,
                           border: `1px solid ${edu.accent}30`,
                           color: edu.accent,
                         }}
                       >
                         {edu.icon}
                       </div>
+                      
+                      <div
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4"
+                        style={{ background: `${edu.accent}15`, color: edu.accent, border: `1px solid ${edu.accent}30` }}
+                      >
+                        <FaCalendarAlt /> {edu.duration}
+                      </div>
+                      
+                      <h3
+                        className="text-2xl md:text-3xl font-bold leading-tight"
+                        style={{ fontFamily: "var(--font-display)", color: "var(--text-heading)" }}
+                      >
+                        {edu.degree}
+                      </h3>
+                    </div>
 
-                      <div className="flex-1">
-                        {/* Degree + Date */}
-                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
-                          <h3
-                            className="text-xl font-bold transition-colors"
-                            style={{ fontFamily: "var(--font-display)", color: "var(--text-heading)" }}
-                          >
-                            {edu.degree}
-                          </h3>
-                          <span
-                            className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full w-fit"
-                            style={{
-                              background: `${edu.accent}18`,
-                              color: edu.accent,
-                              border: `1px solid ${edu.accent}30`,
-                            }}
-                          >
-                            <FaCalendarAlt /> {edu.duration}
-                          </span>
-                        </div>
-
-                        {/* Institution link */}
-                        <a
+                    {/* Right side: Details */}
+                    <div className="flex-1 lg:pt-2">
+                       <div className="flex flex-col gap-3 mb-6 w-full">
+                         <a
                           href={edu.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-sm font-medium mb-3 transition-colors animated-underline"
-                          style={{ color: edu.accent }}
-                        >
-                          {edu.institution}, {edu.address}
-                          <FaExternalLinkAlt className="text-xs" />
-                        </a>
+                          className="flex flex-wrap items-center gap-2 text-xl md:text-2xl font-bold transition-all hover:text-blue-400 leading-tight"
+                          style={{ color: "var(--text-heading)" }}
+                         >
+                          <FaUniversity className="opacity-80 text-xl md:text-2xl" />
+                          <span>{edu.institution}</span>
+                          <FaExternalLinkAlt className="text-sm md:text-base opacity-60 mt-1" />
+                         </a>
+                         <div className="flex items-center gap-2 text-base md:text-lg font-semibold" style={{ color: "var(--text-heading)" }}>
+                           <FaMapMarkerAlt className="opacity-90 text-blue-400" />
+                           {edu.address}
+                         </div>
+                       </div>
 
-                        {/* Score badge */}
-                        <div className="mb-3">
-                          <span
-                            className="text-xs font-bold px-3 py-1 rounded-full"
-                            style={{
-                              background: "rgba(6,182,212,0.1)",
-                              color: "#22d3ee",
-                              border: "1px solid rgba(6,182,212,0.25)",
+                       <div className="flex items-center gap-3 mb-8">
+                          <div 
+                            className="flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-base md:text-lg shadow-sm"
+                            style={{ 
+                              background: "rgba(16,182,22,0.1)", 
+                              color: "#10b981", 
+                              border: "1px solid rgba(16,182,22,0.3)"
                             }}
                           >
+                            <FaAward className="text-lg md:text-xl" />
                             {edu.score}
-                          </span>
-                        </div>
+                          </div>
+                       </div>
 
-                        <p className="text-sm leading-relaxed" style={{ color: "var(--text-body)" }}>{edu.description}</p>
-                      </div>
+                       <p className="text-base leading-relaxed mb-8 opacity-80" style={{ color: "var(--text-body)" }}>{edu.description}</p>
+
+                       <div className="flex flex-wrap gap-2">
+                         {edu.skills.map(skill => (
+                           <span 
+                            key={skill}
+                            className="px-4 py-1.5 rounded-xl text-xs font-semibold"
+                            style={{ background: "var(--glass-bg)", border: "1px solid var(--glass-border)", color: "var(--text-muted)" }}
+                           >
+                            {skill}
+                           </span>
+                         ))}
+                       </div>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
-
       </div>
     </section>
   );

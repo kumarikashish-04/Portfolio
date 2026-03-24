@@ -191,7 +191,7 @@ export default function Home() {
               >
                 <img
                   src={profile}
-                  alt="Kashish"
+                  alt="Kashish Kumari"
                   className="w-full h-full object-cover"
                 />
                 {/* Inner overlay */}
@@ -232,11 +232,11 @@ export default function Home() {
               Hi there, I'm
             </div>
 
-            {/* Name */}
             <h1
-              className="text-5xl md:text-7xl leading-tight"
+              className="text-5xl md:text-7xl leading-tight font-extrabold tracking-tight mb-2"
               style={{ fontFamily: "var(--font-display)", color: "var(--text-heading)" }}
             >
+              Kashish{" "}
               <span
                 style={{
                   background: "linear-gradient(135deg, #60a5fa 0%, #06b6d4 50%, #3b82f6 100%)",
@@ -245,7 +245,7 @@ export default function Home() {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                Kashish
+                Kumari
               </span>
             </h1>
 
