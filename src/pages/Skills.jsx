@@ -1,276 +1,295 @@
+const languages = [
+  { name: "C++",        icon: "⚡", accent: "#60a5fa" },
+  { name: "Python",     icon: "🐍", accent: "#facc15" },
+  { name: "Java",       icon: "☕", accent: "#fb923c" },
+  { name: "JavaScript", icon: "📜", accent: "#fbbf24" },
+  { name: "HTML",       icon: "🌐", accent: "#f97316" },
+  { name: "CSS",        icon: "🎨", accent: "#38bdf8" },
+];
+
+const frameworks = [
+  { name: "React",       icon: "⚛️", accent: "#61dafb" },
+  { name: "Node.js",     icon: "🟢", accent: "#68a063" },
+  { name: "NumPy",       icon: "🔢", accent: "#4f6eb4" },
+  { name: "Pandas",      icon: "🐼", accent: "#e70488" },
+  { name: "Matplotlib",  icon: "📊", accent: "#11a3cf" },
+  { name: "Power BI",    icon: "📈", accent: "#f2c811" },
+];
+
+const tools = [
+  { name: "Git",      icon: "📦", accent: "#f97316" },
+  { name: "VS Code",  icon: "💻", accent: "#38bdf8" },
+  { name: "Postman",  icon: "📮", accent: "#f97316" },
+  { name: "MongoDB",  icon: "🍃", accent: "#4ade80" },
+  { name: "MySQL",    icon: "🗄️", accent: "#38bdf8" },
+  { name: "Docker",   icon: "🐳", accent: "#38bdf8" },
+  { name: "Figma",    icon: "🎨", accent: "#a78bfa" },
+];
+
+const softSkills = [
+  { icon: "💡", name: "Problem Solving",       desc: "Finding elegant solutions to complex challenges" },
+  { icon: "🗣️", name: "Clear Communication",   desc: "Articulating ideas effectively across teams" },
+  { icon: "🤝", name: "Team Collaboration",    desc: "Working synergistically towards common goals" },
+  { icon: "🔍", name: "Analytical Thinking",   desc: "Breaking down problems with precision" },
+  { icon: "🔄", name: "Adaptability",          desc: "Thriving in dynamic environments" },
+  { icon: "📚", name: "Continuous Learning",   desc: "Always expanding knowledge horizons" },
+];
+
+function SkillChip({ name, icon, accent }) {
+  return (
+    <div
+      className="flex flex-col items-center gap-3 p-6 rounded-2xl text-center cursor-default group transition-all duration-300"
+      style={{
+        background: "var(--glass-bg)",
+        border: "1px solid var(--glass-border)",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.background = `${accent}14`;
+        e.currentTarget.style.borderColor = `${accent}55`;
+        e.currentTarget.style.transform = "translateY(-4px)";
+        e.currentTarget.style.boxShadow = `0 12px 32px ${accent}25`;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = "rgba(255,255,255,0.03)";
+        e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)";
+        e.currentTarget.style.transform = "none";
+        e.currentTarget.style.boxShadow = "none";
+      }}
+    >
+      <span className="text-4xl">{icon}</span>
+      <span className="text-sm font-semibold text-slate-300">{name}</span>
+    </div>
+  );
+}
+
 export default function Skills() {
-  const languages = [
-    { name: "C++", icon: "⚡", color: "blue" },
-    { name: "Python", icon: "🐍", color: "yellow" },
-    { name: "Java", icon: "☕", color: "red" },
-    { name: "JavaScript", icon: "📜", color: "yellow" },
-    { name: "HTML", icon: "🌐", color: "orange" },
-    { name: "CSS", icon: "🎨", color: "blue" },
-  ];
-
-  const frameworks = [
-    { name: "React", icon: "⚛️", color: "cyan" },
-    { name: "Node.js", icon: "🟢", color: "green" },
-    { name: "NumPy", icon: "🔢", color: "blue" },
-    { name: "Pandas", icon: "🐼", color: "purple" },
-    { name: "Matplotlib", icon: "📊", color: "blue" },
-    { name: "Power BI", icon: "📈", color: "yellow" },
-  ];
-
-  const softSkills = [
-    { name: "Problem Solving", icon: "💡", description: "Finding elegant solutions to complex challenges" },
-    { name: "Clear Communication", icon: "🗣️", description: "Articulating ideas effectively across teams" },
-    { name: "Team Collaboration", icon: "🤝", description: "Working synergistically towards common goals" },
-    { name: "Analytical Thinking", icon: "🔍", description: "Breaking down problems with precision" },
-    { name: "Adaptability", icon: "🔄", description: "Thriving in dynamic environments" },
-    { name: "Continuous Learning", icon: "📚", description: "Always expanding knowledge horizons" },
-  ];
-
-  const tools = [
-    { name: "Git", icon: "📦", color: "orange" },
-    { name: "VS Code", icon: "💻", color: "blue" },
-    { name: "Postman", icon: "📮", color: "orange" },
-    { name: "MongoDB", icon: "🍃", color: "green" },
-    { name: "MySQL", icon: "🗄️", color: "blue" },
-    { name: "Docker", icon: "🐳", color: "blue" },
-    { name: "Figma", icon: "🎨", color: "purple" },
-  ];
-
-  // Color mapping for gradients
-  const getGradient = (color) => {
-    const gradients = {
-      blue: "from-blue-500 to-cyan-400",
-      yellow: "from-yellow-500 to-amber-400",
-      red: "from-red-500 to-orange-400",
-      orange: "from-orange-500 to-amber-400",
-      green: "from-green-500 to-emerald-400",
-      purple: "from-purple-500 to-pink-400",
-      cyan: "from-cyan-500 to-blue-400",
-    };
-    return gradients[color] || gradients.blue;
-  };
-
-  const getBorderColor = (color) => {
-    const colors = {
-      blue: "border-blue-500/30 hover:border-blue-400/40",
-      yellow: "border-yellow-500/30 hover:border-yellow-400/40",
-      red: "border-red-500/30 hover:border-red-400/40",
-      orange: "border-orange-500/30 hover:border-orange-400/40",
-      green: "border-green-500/30 hover:border-green-400/40",
-      purple: "border-purple-500/30 hover:border-purple-400/40",
-      cyan: "border-cyan-500/30 hover:border-cyan-400/40",
-    };
-    return colors[color] || colors.blue;
-  };
-
-  const getBgGradient = (color) => {
-    const gradients = {
-      blue: "from-blue-500/10 to-cyan-500/5",
-      yellow: "from-yellow-500/10 to-amber-500/5",
-      red: "from-red-500/10 to-orange-500/5",
-      orange: "from-orange-500/10 to-amber-500/5",
-      green: "from-green-500/10 to-emerald-500/5",
-      purple: "from-purple-500/10 to-pink-500/5",
-      cyan: "from-cyan-500/10 to-blue-500/5",
-    };
-    return gradients[color] || gradients.blue;
-  };
-
   return (
     <section
       id="skills"
-      className="relative min-h-screen bg-gradient-to-b from-gray-950 to-black px-6 md:px-12 py-12 overflow-hidden"
+      className="relative min-h-screen pt-12 pb-20 px-6 md:px-12 overflow-hidden"
+      style={{ background: "var(--bg-body)" }}
     >
-      {/* Animated Background Elements */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 animate-pulse delay-700"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-cyan-500/5 to-purple-500/5 rounded-full blur-3xl animate-spin-slow"></div>
-      
+      {/* Background orbs — blue/cyan */}
+      <div
+        className="absolute top-0 left-0 w-80 h-80 rounded-full"
+        style={{
+          background: "radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%)",
+          filter: "blur(60px)",
+          transform: "translate(-30%, -30%)",
+        }}
+      />
+      <div
+        className="absolute bottom-0 right-0 w-96 h-96 rounded-full"
+        style={{
+          background: "radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%)",
+          filter: "blur(60px)",
+          transform: "translate(30%, 30%)",
+        }}
+      />
 
-      
       <div className="max-w-6xl mx-auto relative z-10">
-        
         {/* HEADER */}
-        <div className="mb-20 text-center">
-          <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
-            <span className="text-blue-400 font-semibold tracking-wider animate-pulse">⚡ EXPERTISE ⚡</span>
-            <div className="w-12 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
-          </div>
-          
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Skills & <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Expertise</span>
-          </h2>
-          
-          <p className="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
-            A comprehensive showcase of my technical proficiency, tool mastery, and professional 
-            capabilities refined through practical application and dedicated learning.
+        <div className="text-center mb-20">
+          <div className="section-label justify-center">My Expertise</div>
+          <h1
+            className="text-4xl md:text-6xl font-bold mt-2"
+            style={{ fontFamily: "var(--font-display)", color: "var(--text-heading)" }}
+          >
+            Skills &{" "}
+            <span className="gradient-text">Technologies</span>
+          </h1>
+          <p className="max-w-2xl mx-auto mt-4 leading-relaxed" style={{ color: "var(--text-body)" }}>
+            A comprehensive showcase of my technical proficiency, tool mastery, and professional capabilities
+            refined through dedicated learning and real-world application.
           </p>
         </div>
 
-        {/* TECHNICAL SKILLS */}
-        <div className="mb-24">
-          <h3 className="text-3xl font-bold text-white mb-12 flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center animate-bounce">
-              <span className="text-white">⚡</span>
+        {/* ──────────── TECHNICAL SKILLS ──────────── */}
+        <div className="mb-16">
+          <div className="flex items-center gap-3 mb-10">
+            <div
+              className="w-10 h-10 rounded-xl flex items-center justify-center text-lg"
+              style={{ background: "linear-gradient(135deg, #2563eb, #0891b2)", boxShadow: "0 4px 16px rgba(59,130,246,0.35)" }}
+            >
+              ⚡
             </div>
-            Technical Skills
-          </h3>
+            <h2
+              className="text-2xl font-bold"
+              style={{ fontFamily: "var(--font-display)", color: "var(--text-heading)" }}
+            >
+              Technical Skills
+            </h2>
+          </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            
-            {/* Languages Card */}
-            <div className="bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 hover:-translate-y-1 group">
-              <div className="flex items-center justify-between mb-8">
-                <h4 className="text-xl font-bold text-white flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
-                    <span className="text-white">{"</>"}</span>
-                  </div>
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            {/* Languages */}
+            <div
+              className="rounded-3xl p-7"
+              style={{
+                background: "rgba(59,130,246,0.05)",
+                border: "1px solid rgba(59,130,246,0.15)",
+                backdropFilter: "blur(12px)",
+              }}
+            >
+              <div className="flex items-center justify-between mb-6">
+                <h3
+                  className="text-lg font-semibold flex items-center gap-2"
+                  style={{ fontFamily: "var(--font-display)", color: "#93c5fd" }}
+                >
+                  <span
+                    className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold"
+                    style={{ background: "rgba(59,130,246,0.15)", color: "#60a5fa" }}
+                  >
+                    {"</>"}
+                  </span>
                   Programming Languages
-                </h4>
-                <div className="px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-300 text-sm">
-                  {languages.length} Skills
-                </div>
+                </h3>
+                <span
+                  className="text-xs px-2.5 py-1 rounded-full font-medium"
+                  style={{ background: "rgba(59,130,246,0.1)", color: "#60a5fa", border: "1px solid rgba(59,130,246,0.2)" }}
+                >
+                  {languages.length} skills
+                </span>
               </div>
-
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                {languages.map((skill, i) => (
-                  <div 
-                    key={i}
-                    className={`group/item relative p-4 rounded-xl bg-gradient-to-br ${getBgGradient(skill.color)} border ${getBorderColor(skill.color)} hover:scale-105 transition-all duration-300 cursor-pointer flex flex-col items-center text-center`}
-                  >
-                    <span className={`text-3xl mb-2 filter drop-shadow-lg group-hover/item:scale-110 transition-transform duration-300`}>
-                      {skill.icon}
-                    </span>
-                    <span className="text-gray-200 group-hover/item:text-white transition-colors font-medium text-sm">
-                      {skill.name}
-                    </span>
-                    <div className={`absolute inset-0 border-2 border-${skill.color}-500/0 group-hover/item:border-${skill.color}-500/20 rounded-xl transition-all duration-300`}></div>
-                  </div>
-                ))}
+                {languages.map((s) => <SkillChip key={s.name} {...s} />)}
               </div>
             </div>
 
-            {/* Frameworks Card */}
-            <div className="bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 hover:-translate-y-1 group">
-              <div className="flex items-center justify-between mb-8">
-                <h4 className="text-xl font-bold text-white flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-400 rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
-                    <span className="text-white">⚛️</span>
-                  </div>
-                  Frameworks & Libraries
-                </h4>
-                <div className="px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-300 text-sm">
-                  {frameworks.length} Skills
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                {frameworks.map((skill, i) => (
-                  <div 
-                    key={i}
-                    className={`group/item relative p-4 rounded-xl bg-gradient-to-br ${getBgGradient(skill.color)} border ${getBorderColor(skill.color)} hover:scale-105 transition-all duration-300 cursor-pointer flex flex-col items-center text-center`}
+            {/* Frameworks */}
+            <div
+              className="rounded-3xl p-7"
+              style={{
+                background: "rgba(6,182,212,0.05)",
+                border: "1px solid rgba(6,182,212,0.15)",
+                backdropFilter: "blur(12px)",
+              }}
+            >
+              <div className="flex items-center justify-between mb-6">
+                <h3
+                  className="text-lg font-semibold flex items-center gap-2"
+                  style={{ fontFamily: "var(--font-display)", color: "#67e8f9" }}
+                >
+                  <span
+                    className="w-8 h-8 rounded-lg flex items-center justify-center"
+                    style={{ background: "rgba(6,182,212,0.15)" }}
                   >
-                    <span className={`text-3xl mb-2 filter drop-shadow-lg group-hover/item:scale-110 transition-transform duration-300`}>
-                      {skill.icon}
-                    </span>
-                    <span className="text-gray-200 group-hover/item:text-white transition-colors font-medium text-sm">
-                      {skill.name}
-                    </span>
-                    <div className={`absolute inset-0 border-2 border-${skill.color}-500/0 group-hover/item:border-${skill.color}-500/20 rounded-xl transition-all duration-300`}></div>
-                  </div>
-                ))}
+                    ⚛️
+                  </span>
+                  Frameworks & Libraries
+                </h3>
+                <span
+                  className="text-xs px-2.5 py-1 rounded-full font-medium"
+                  style={{ background: "rgba(6,182,212,0.1)", color: "#22d3ee", border: "1px solid rgba(6,182,212,0.2)" }}
+                >
+                  {frameworks.length} skills
+                </span>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                {frameworks.map((s) => <SkillChip key={s.name} {...s} />)}
               </div>
             </div>
           </div>
 
-          {/* Tools Section */}
-          <div className="bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 group">
-            <h4 className="text-xl font-bold text-white mb-8 flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-green-400 rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
-                <span className="text-white">🛠️</span>
-              </div>
+          {/* Tools */}
+          <div
+            className="rounded-3xl p-7"
+            style={{
+              background: "rgba(139,92,246,0.04)",
+              border: "1px solid rgba(139,92,246,0.12)",
+              backdropFilter: "blur(12px)",
+            }}
+          >
+            <h3
+              className="text-lg font-semibold flex items-center gap-2 mb-6"
+              style={{ fontFamily: "var(--font-display)", color: "var(--text-heading)" }}
+            >
+              <span
+                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                style={{ background: "rgba(139,92,246,0.12)" }}
+              >
+                🛠️
+              </span>
               Tools & Technologies
-            </h4>
-            
-            <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4">
-              {tools.map((tool, i) => (
-                <div 
-                  key={i}
-                  className={`group/item relative p-4 rounded-xl bg-gradient-to-br ${getBgGradient(tool.color)} border ${getBorderColor(tool.color)} hover:scale-105 transition-all duration-300 cursor-pointer flex flex-col items-center text-center`}
-                >
-                  <span className={`text-3xl mb-2 filter drop-shadow-lg group-hover/item:scale-110 transition-transform duration-300`}>
-                    {tool.icon}
-                  </span>
-                  <span className="text-gray-200 group-hover/item:text-white transition-colors font-medium text-xs">
-                    {tool.name}
-                  </span>
-                  <div className={`absolute inset-0 border-2 border-${tool.color}-500/0 group-hover/item:border-${tool.color}-500/20 rounded-xl transition-all duration-300`}></div>
-                </div>
-              ))}
+            </h3>
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-4">
+              {tools.map((t) => <SkillChip key={t.name} {...t} />)}
             </div>
           </div>
         </div>
 
-        {/* SOFT SKILLS */}
+        {/* ──────────── PROFESSIONAL STRENGTHS ──────────── */}
         <div>
-          <h3 className="text-3xl font-bold text-white mb-12 flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-yellow-400 rounded-lg flex items-center justify-center animate-bounce delay-300">
-              <span className="text-white">🌟</span>
+          <div className="flex items-center gap-3 mb-10">
+            <div
+              className="w-10 h-10 rounded-xl flex items-center justify-center text-lg"
+              style={{ background: "linear-gradient(135deg, #3b82f6, #06b6d4)", boxShadow: "0 4px 16px rgba(59,130,246,0.3)" }}
+            >
+              🌟
             </div>
-            Professional Strengths
-          </h3>
+            <h2
+              className="text-2xl font-bold"
+              style={{ fontFamily: "var(--font-display)", color: "var(--text-heading)" }}
+            >
+              Professional Strengths
+            </h2>
+          </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {softSkills.map((skill, i) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {softSkills.map(({ icon, name, desc }) => (
               <div
-                key={i}
-                className="group relative bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-yellow-500/30 hover:bg-gradient-to-br hover:from-yellow-500/10 hover:to-transparent transition-all duration-500 hover:-translate-y-2"
+                key={name}
+                className="group rounded-2xl p-8 transition-all duration-400 relative overflow-hidden cursor-default"
+                style={{
+                  background: "var(--glass-bg)",
+                  border: "1px solid var(--glass-border)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(59,130,246,0.06)";
+                  e.currentTarget.style.borderColor = "rgba(59,130,246,0.2)";
+                  e.currentTarget.style.transform = "translateY(-4px)";
+                  e.currentTarget.style.boxShadow = "0 16px 40px rgba(59,130,246,0.12)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(255,255,255,0.03)";
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)";
+                  e.currentTarget.style.transform = "none";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
               >
-                {/* Hover effect background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/0 via-transparent to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
-                <div className="relative z-10">
-                  <div className="w-14 h-14 bg-gradient-to-br from-amber-500/20 to-yellow-400/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                    <span className="text-3xl filter drop-shadow-lg">{skill.icon}</span>
-                  </div>
-                  
-                  <h4 className="text-xl font-bold text-white mb-3 group-hover:text-yellow-200 transition-colors">
-                    {skill.name}
-                  </h4>
-                  
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    {skill.description}
-                  </p>
+                <div
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-5"
+                  style={{ background: "rgba(59,130,246,0.08)", border: "1px solid rgba(59,130,246,0.15)" }}
+                >
+                  {icon}
+                </div>
+                <h4
+                  className="text-base font-bold mb-2"
+                  style={{ fontFamily: "var(--font-display)", color: "var(--text-heading)" }}
+                >
+                  {name}
+                </h4>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--text-body)" }}>{desc}</p>
 
-                  {/* Progress indicator */}
-                  <div className="mt-4 w-full h-1 bg-gray-800 rounded-full overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-yellow-500 to-amber-400 rounded-full w-0 group-hover:w-full transition-all duration-1000"></div>
-                  </div>
+                {/* Hover indicator bar */}
+                <div className="mt-5 w-full h-0.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
+                  <div
+                    className="h-full rounded-full w-0 group-hover:w-full transition-all duration-700"
+                    style={{ background: "linear-gradient(90deg, #3b82f6, #06b6d4)" }}
+                  />
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Footer Note */}
+        {/* Footer note */}
         <div className="mt-16 text-center">
-          <p className="text-gray-500 text-sm flex items-center justify-center gap-2">
-            <span className="animate-pulse">✨</span>
-            Continuously expanding skill set through personal projects and professional challenges
-            <span className="animate-pulse delay-300">✨</span>
+          <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+            ✨ Continuously expanding skill set through personal projects and professional challenges ✨
           </p>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0) translateX(0); }
-          25% { transform: translateY(-20px) translateX(10px); }
-          50% { transform: translateY(0) translateX(20px); }
-          75% { transform: translateY(20px) translateX(10px); }
-        }
-      `}</style>
     </section>
   );
 }

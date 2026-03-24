@@ -1,32 +1,31 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "./components/Navbar";
+import CustomCursor from "./components/CustomCursor";
 import Home from "./pages/Home";
 import Skills from "./pages/Skills";
 import Projects from "./pages/Projects";
 import Education from "./pages/Education";
-
+import Certificates from "./pages/Certificates";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      {/* Global background wrapper */}
-      <div className="min-h-screen bg-gray-900 text-white">
-        
-        {/* Fixed Navbar */}
-        <Navbar />
-
-        {/* Page Content (below navbar) */}
-        <main className="pt-20">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/education" element={<Education />} />
-            {/* <Route path="/contact" element={<Contact />} />  */}
-          </Routes>
-        </main>
-
-      </div>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <div className="min-h-screen" style={{ background: 'var(--bg-body)', color: 'var(--text-base)' }}>
+          <CustomCursor />
+          <Navbar />
+          <main className="pt-16">
+            <Routes>
+              <Route path="/"          element={<Home />} />
+              <Route path="/skills"    element={<Skills />} />
+              <Route path="/projects"  element={<Projects />} />
+              <Route path="/education" element={<Education />} />
+              <Route path="/certificates" element={<Certificates />} />
+            </Routes>
+          </main>
+        </div>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
