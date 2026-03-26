@@ -29,7 +29,7 @@ const educationData = [
     institution: "Adarsh Vidya Mandir",
     address: "Bokaro Steel City, Jharkhand, India",
     duration: "2021 – 2022",
-    score: "88.6% ",
+    score: "88.6%",
     link: "https://avmbokaro.co.in/#",
     description:
       "Core focus on Physics, Chemistry, and Mathematics. Developed strong analytical foundations and logical reasoning skills through rigorous academic training.",

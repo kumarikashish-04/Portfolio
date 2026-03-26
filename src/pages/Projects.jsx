@@ -11,7 +11,7 @@ const projects = [
     category: "Full Stack",
     emoji: "💼",
     github: "https://github.com/kumarikashish-04/Job-Portal",
-    live: "https://job-portal.vercel.app",
+    live: "https://jobportal-orcin-nine.vercel.app/",
     image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80",
   },
   {
