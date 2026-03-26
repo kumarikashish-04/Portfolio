@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "./components/Navbar";
 import CustomCursor from "./components/CustomCursor";
@@ -11,7 +11,7 @@ import Certificates from "./pages/Certificates";
 export default function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
+      <HashRouter>
         <div className="min-h-screen" style={{ background: 'var(--bg-body)', color: 'var(--text-base)' }}>
           <CustomCursor />
           <Navbar />
@@ -25,7 +25,7 @@ export default function App() {
             </Routes>
           </main>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   );
 }
