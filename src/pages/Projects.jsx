@@ -3,6 +3,18 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 const projects = [
   {
+    title: "InterviewIQ.AI",
+    description:
+      "A smart, AI-driven platform for practicing role-based mock interviews with real-time feedback, performance scoring, and speech-to-text integration.",
+    tech: ["Next.js", "Gemini AI", "Tailwind CSS", "Web Speech API"],
+    accent: "#8b5cf6",
+    category: "Full Stack AI",
+    emoji: "🤖",
+    github: "https://github.com/kumarikashish-04",
+    live: "https://interview-iq-client.vercel.app/",
+    image: "/projects/interview-iq.png",
+  },
+  {
     title: "Job Portal Web Application",
     description:
       "A full-stack job portal built with React, Node.js, Express, and MongoDB — featuring authentication, job listings, and application management.",
@@ -84,18 +96,7 @@ const projects = [
     live: "https://weather1vista.netlify.app",
     image: "https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?auto=format&fit=crop&w=900&q=80",
   },
-  {
-    title: "InterviewIQ.AI",
-    description:
-      "A smart, AI-driven platform for practicing role-based mock interviews with real-time feedback, performance scoring, and speech-to-text integration.",
-    tech: ["Next.js", "Gemini AI", "Tailwind CSS", "Web Speech API"],
-    accent: "#8b5cf6",
-    category: "Full Stack AI",
-    emoji: "🤖",
-    github: "https://github.com/kumarikashish-04",
-    live: "https://interview-iq-client.vercel.app/",
-    image: "/projects/interview-iq.png",
-  },
+ 
 ];
 
 const overview = [
