@@ -3,14 +3,14 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 const projects = [
   {
-    title: "InterviewIQ.AI",
+    title: "Interview IQ.AI",
     description:
-      "A smart, AI-driven platform for practicing role-based mock interviews with real-time feedback, performance scoring, and speech-to-text integration.",
-    tech: ["Next.js", "Gemini AI", "Tailwind CSS", "Web Speech API"],
+      "An AI-powered interview preparation platform that parses resumes to generate personalized HR and technical questions, featuring automated end-to-end simulation and a flexible credit system.",
+    tech: ["MERN Stack", "Open Router API", "Google OAuth", "Firebase"],
     accent: "#8b5cf6",
     category: "Full Stack AI",
     emoji: "🤖",
-    github: "https://github.com/kumarikashish-04",
+    github: "https://github.com/kumarikashish-04/InterviewIQ-client",
     live: "https://interview-iq-client.vercel.app/",
     image: "/projects/interview-iq.png",
   },
