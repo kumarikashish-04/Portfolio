@@ -83,7 +83,7 @@ const techStack = [
 
 /* ── Stats ───────────────────────────────────────────────── */
 const stats = [
-  { value: "5+", label: "Projects" },
+  { value: "8+", label: "Projects" },
   { value: "8+", label: "Skills" },
   { value: "100%", label: "Dedication" },
 ];

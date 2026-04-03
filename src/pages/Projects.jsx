@@ -85,20 +85,21 @@ const projects = [
     image: "https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?auto=format&fit=crop&w=900&q=80",
   },
   {
-    title: "Student Performance Prediction",
+    title: "InterviewIQ.AI",
     description:
-      "Predictive analysis of student performance using machine learning, exploring academic and demographic factors that influence success.",
-    tech: ["Python", "ML", "Pandas", "Scikit-Learn"],
-    accent: "#fb923c",
-    category: "Data Analytics",
-    emoji: "🎓",
-    github: "https://github.com/kumarikashish-04/Student_performance",
-    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=80",
+      "A smart, AI-driven platform for practicing role-based mock interviews with real-time feedback, performance scoring, and speech-to-text integration.",
+    tech: ["Next.js", "Gemini AI", "Tailwind CSS", "Web Speech API"],
+    accent: "#8b5cf6",
+    category: "Full Stack AI",
+    emoji: "🤖",
+    github: "https://github.com/kumarikashish-04",
+    live: "https://interview-iq-client.vercel.app/",
+    image: "/projects/interview-iq.png",
   },
 ];
 
 const overview = [
-  { value: "7+",   label: "Projects Completed",  accent: "#60a5fa" },
+  { value: "8+",   label: "Projects Completed",  accent: "#60a5fa" },
   { value: "12+",  label: "Technologies Used",    accent: "#22d3ee" },
   { value: "100%", label: "Code Quality",         accent: "#3b82f6" },
   { value: "∞",    label: "Learning Mindset",     accent: "#06b6d4" },
